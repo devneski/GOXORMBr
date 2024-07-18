@@ -461,7 +461,7 @@ end;
 function TBlob.GetDecodeBase64(const Value: String): Boolean;
 begin
   Result := False;
-  FBase64Bytes := DecodeBase64(AString);
+//  FBase64Bytes := DecodeBase64(AString);
   FBase64String := Value;
   Result := True;
 end;

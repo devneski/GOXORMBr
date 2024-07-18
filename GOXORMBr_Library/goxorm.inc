@@ -1,5 +1,6 @@
 {
   Compiler				 CompilerVersion	Defined Symbol	Used BPL
+  Delphi 12 Athens       36 				VER360			29
   Delphi 11 Alexandria   35 				VER350			28
   Delphi 10.4 Sidney     34 				VER340			27
   Delphi 10.3 Rio		 33 				VER330			26
@@ -50,12 +51,8 @@
 {.$ENDIF}
 
 
-
-
-
-
-// Delphi ??????
-{$IFDEF VER350}
+// Delphi Athens
+{$IFDEF VER360}
   {$DEFINE DELPHI14_UP}
   {$DEFINE DELPHI15_UP}
   {$DEFINE DELPHI16_UP}

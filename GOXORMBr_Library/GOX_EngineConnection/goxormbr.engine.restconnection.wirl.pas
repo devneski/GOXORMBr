@@ -119,6 +119,8 @@ begin
   //WiRL
   FRESTClient := TWiRLClient.Create(nil);
   FRESTClient.ClientVendor := 'TIdHttp (Indy)';
+  FRESTClient.ConnectTimeout := 180000;
+  FRESTClient.ReadTimeout    := 180000;
   //
   FRESTClientApp := TWiRLClientApplication.Create(nil);
   FRESTClientApp.Client := FRESTClient;

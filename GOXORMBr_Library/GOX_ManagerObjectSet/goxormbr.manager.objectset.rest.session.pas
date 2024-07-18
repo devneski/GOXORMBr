@@ -336,7 +336,7 @@ begin
   //
   //   Transforma o JSON recebido populando em uma lista de objetos
   if LJSON = '[]' then
-   Result := nil // TGOXJson.JSONToObject<TObjectList<M>>(TJSONNull.Create)
+   Result := nil
   else
    Result := TGOXJson.JSONStringToObjectList<M>(LJSON);
 end;
@@ -419,10 +419,9 @@ begin
   //
   //Transforma o JSON recebido populando em uma lista de objetos
   if LJSON = '[]' then
-   Result := nil //TGOXJson.JSONToObject<TObjectList<M>>(TJSONNull.Create)
+   Result := nil
   else
   Result := TGOXJson.JSONStringToObjectList<M>(LJSON);
-
 end;
 
 function TSessionObjectSetRest<M>.FindFrom(const ASubResourceName: String): TObjectList<M>;
@@ -453,8 +452,11 @@ begin
     if LJSON.Length = 0 then LJSON := '[]' else
     if LJSON = '{}' then LJSON := '[]' else
     if Copy(LJSON,1,1) = '{' then LJSON := '[' + LJSON + ']';
-    // Transforma o JSON recebido populando uma lista de objetos
-    Result := TGOXJson.JSONStringToObjectList<M>(LJSON);
+    //Transforma o JSON recebido populando em uma lista de objetos
+    if LJSON = '[]' then
+     Result := nil
+    else
+     Result := TGOXJson.JSONStringToObjectList<M>(LJSON);
   end
   else
   begin
@@ -486,7 +488,7 @@ begin
     finally
       if LParamsObject <> nil then LParamsObject.Free;
       //Retorna um Array Vazio
-      Result := TGOXJson.JSONStringToObjectList<M>('[]');
+      Result := Nil;
     end;
   end;
 end;
@@ -509,6 +511,10 @@ begin
   if Copy(LJSON,1,1) = '{' then LJSON := '[' + LJSON + ']';
   //
   // Transforma o JSON recebido populando uma lista de objetos
+  //   Transforma o JSON recebido populando em uma lista de objetos
+  if LJSON = '[]' then
+   Result := nil
+  else
   Result := TGOXJson.JSONStringToObjectList<M>(LJSON);
 end;
 
